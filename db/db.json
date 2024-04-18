@@ -4,25 +4,29 @@
       "name": "Ginger Brave",
       "rarity": "Common",
       "type": "Charge",
-      "position": "Rear"
+      "position": "Rear",
+      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/c/c1/Brave-cookie.png"
     },
     {
       "name": "Strawberry Cookie",
       "rarity": "Common",
       "type": "Defense",
-      "position": "Front"
+      "position": "Front",
+      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/a/a6/Strawberry-cookie.png"
     },
     {
       "name": "Princess Cookie",
       "rarity": "Rare",
       "type": "Charge",
-      "position": "Front"
+      "position": "Front",
+      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/4/48/Princess_cookie_alternate.png"
     },
     {
       "name": "Blackberry Cookie",
       "rarity": "Rare",
       "type": "Magic",
-      "position": "Rear"
+      "position": "Rear",
+      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/7/7a/Blackberry_cookie.png"
     }
   ]
 }

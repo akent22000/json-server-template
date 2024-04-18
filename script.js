@@ -5,17 +5,24 @@ function getCookies() {
         .then((response) => response.json());
 }
 
-async function mapCookies() {
-    let data = await getCookies();
 
-    let text = ``;
-    data.map(function (data) {
-        document.getElementById("display").innerHTML =
-            text += `<div class="test">${data.name} "map"</div>
-                    <p class="test">${data.rarity}</p>`;
-    });
+async function getCookies2() {
+    const response = await fetch('http://localhost:3000/cookies')
+    data = await response.json();
 }
-mapCookies();
+
+
+// async function mapCookies() {
+//     let data = await getCookies();
+
+//     let text = ``;
+//     data.map(function (data) {
+//         document.getElementById("display").innerHTML =
+//             text += `<div class="test">${data.name} "map"</div>
+//                     <p class="test">${data.rarity}</p>`;
+//     });
+// }
+// mapCookies();
 
 function createCheckbox() {
     let checkbox = document.createElement("input");
@@ -53,7 +60,9 @@ async function sortCookies() {
             data.map(function (data) {
                 document.getElementById("display").innerHTML =
                     text += `<div class="test">${data.name} "sort"</div>
-                    <p class="test">${data.rarity}</p>`;
+                    <p class="test">${data.rarity}</p>
+                    <img src='${data.image}' class='image imgWrap' />`;
+                ;
             });
 
         } else {
@@ -69,49 +78,22 @@ sortCookies();
 
 async function filterCookies() {
     let data = await getCookies();
-    filterCommon = 'yes'
-    filterRare = ''
-    filterClear = ''
-    if (filterCommon === 'yes') {
-        let filteredBookTitles = data
-            .filter(data => data.rarity === "Common")
-            // first filter (us any criteria here to select only the books you want)
-            .map(data => data.name);
-        let text = ``;
 
-        document.getElementById("display").innerHTML =
-            text += `<div class="test">${filteredBookTitles} "sort"</div>
-        <p class="test">${data.rarity}</p>`;
-
-    } else if (filterRare === 'yes') {
-        let filteredBookTitles2 = data
-            .filter(data => data.rarity === "Rare")           // first filter (us any criteria here to select only the books you want)
-            .map(data => data.name);
-        let text = ``;
-
-        document.getElementById("display").innerHTML =
-            text += `<div class="test">${filteredBookTitles2} "sort"</div>
-        <p class="test">${data.rarity}</p>`;
-    } else if (filterClear === 'yes') {
-
-        document.getElementById("display").innerHTML = ''
-    }
+    // filterCookies();
 }
-filterCookies();
-
 
 
 const commonBtn = document.getElementById("commonBtn");
 commonBtn.addEventListener("click", (event) => {
-    filterRare = 'no'
-    filterCommon = 'yes'
+    data.rarity = 'Common'
+    // filterCommon = 'yes'
     filterCookies();
 });
 
 const rareBtn = document.getElementById("rareBtn");
 rareBtn.addEventListener("click", (event) => {
-    filterCommon = 'no'
-    filterRare = 'yes'
+    data.rarity = 'Rare'
+
     filterCookies();
 });
 
@@ -127,18 +109,6 @@ clearBtn.addEventListener("click", (event) => {
 
 
 
-
-// const fetchData = async () => {
-//     const response = await fetch('http://localhost:3000/cookies');
-//     const data = await response.json();
-//     return data;
-// };
-
-async function getCookies() {
-    const response = await fetch('http://localhost:3000/cookies')
-    data = await response.json();
-}
-
 const charactersList = document.getElementById('charactersList');
 const searchBar = document.getElementById('searchBar');
 // let data = [];
@@ -148,8 +118,9 @@ searchBar.addEventListener('keyup', (e) => {
 
     const filteredCharacters = data.filter((data) => {
         return (
-            data.name.toLowerCase().includes(searchString) ||
-            data.type.toLowerCase().includes(searchString)
+            data.name.toLowerCase().includes(searchString)
+            //  ||
+            // // data.type.toLowerCase().includes(searchString)
         );
     });
     displayCharacters(filteredCharacters);
@@ -161,17 +132,16 @@ const displayCharacters = (data) => {
     const htmlString = data
         .map((data) => {
             return `
-            <li class="character">
-                <h2>${data.name}</h2>
-                <p>House: ${data.type}</p>
-            </li>
+            <div class="test">${data.name} "search"</div>
+            <p class="test">${data.type}</p>
+            <img src='${data.image}' class='image imgWrap' />
         `;
         })
         .join('');
-    charactersList.innerHTML = htmlString;
+    display.innerHTML = htmlString;
 };
 
-getCookies();
+getCookies2();
 
 
 
@@ -180,72 +150,6 @@ getCookies();
 
 
 //Chaining map, filter, and reduce methods involves applying them sequentially, with each method receiving the output of the previous one.
-
-// const searchPokemon = async () => {
-
-//     data = await fetchData();
-
-
-//     data.filter(data => data.rarity === "Rare")
-//     console.log(data.rarity)
-
-//     data.map(function (data) {
-//         console.log(`${data.name}`)
-//         console.log(data.name)
-//     });
-
-//     // const pokemonList = document.querySelector('.pokemon-list');
-//     // const searchQuery = searchInput.value.toLowerCase();
-
-//     function dataData() {
-
-//         data.filter(data => data.rarity === "Rare")
-//         console.log(data.rarity)
-//     }
-//     dataData()
-
-//     function dataDatadata() {
-
-//         data.map(function (data) {
-//             console.log(`${data.name}`)
-//             console.log(data.name)
-//         });
-//     }
-//     dataDatadata()
-//     // const matchingPokemons = data.filter((data) => data.name.includes('Ginger'));
-
-//     // data.filter(data => data.name.includes(searchQuery))
-
-
-
-//     //     const matchingPokemons = data.filter((data) => data.name.includes(searchQuery));
-
-
-//     // if (matchingPokemons.length > 0) {
-//     //     // display matching Pokemon
-
-//     //     let text = ``;
-//     //     data.map(function (data) {
-//     //         document.getElementById("display").innerHTML =
-//     //             text += `<div class="test">${data.name} "sort"</div>
-//     //                 <p class="test">${data.rarity}</p>`;
-//     //     });
-//     //     console.log(data + 'working')
-
-//     // } else {
-//     //     // display no results message
-//     //     document.getElementById("display").innerHTML = ''
-//     //     console.log(data + 'NOT working or search was empty')
-
-//     // }
-// };
-
-// searchPokemon();
-
-
-
-// const searchInput = document.getElementById('search-input');
-// searchInput.addEventListener('input', searchPokemon);
 
 
 // //The for loop is an iterative statement that checks for certain conditions and then executes a block of code repeatedly as long as those conditions are met.
