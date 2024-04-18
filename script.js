@@ -14,128 +14,88 @@ async function getCookies2() {
 
 
 
-// function createCheckbox() {
-//     let checkbox = document.createElement("input");
-//     checkbox.setAttribute("type", "checkbox");
-//     checkbox.setAttribute("id", "checkbox");
+function createCheckbox() {
+    let checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("id", "checkbox");
 
-//     let checkboxP = document.createElement("p");
-//     checkboxP.textContent = "Click Checkbox to sort Cookie Characters alpabetically"
+    let checkboxP = document.createElement("p");
+    checkboxP.textContent = "Click Checkbox to sort Cookie Characters alpabetically"
 
-//     document.body.appendChild(checkboxP);
-//     document.body.appendChild(checkbox);
-// }
-// createCheckbox();
+    document.body.appendChild(checkboxP);
+    document.body.appendChild(checkbox);
+}
+createCheckbox();
 
-// async function sortCookies() {
-//     let data = await getCookies();
+async function sortCookies() {
+    let data = await getCookies();
 
-//     let checkbox = document.getElementById("checkbox");
-//     checkbox.addEventListener("change", () => {
-//         if (checkbox.checked) {
-//             data.sort((a, b) => {
-//                 const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-//                 const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-//                 if (nameA < nameB) {
-//                     return -1;
-//                 }
-//                 if (nameA > nameB) {
-//                     return 1;
-//                 }
-//                 // names must be equal
-//                 return 0;
-//             });
+    let checkbox = document.getElementById("checkbox");
+    checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+            data.sort((a, b) => {
+                const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                // names must be equal
+                return 0;
+            });
 
-//             let text = ``;
-//             data.map(function (data) {
-//                 document.getElementById("display").innerHTML =
-//                     text += `<div class="test">${data.name} "sort"</div>
-//                     <p class="test">${data.rarity}</p>
-//                     <img src='${data.image}' class='image imgWrap' />`;
-//                 ;
-//             });
+            let text = ``;
+            data.map(function (data) {
+                document.getElementById("display").innerHTML =
+                    text += `<div class="test">${data.name} "sort"</div>
+                    <p class="test">${data.rarity}</p>
+                    <img src='${data.image}' class='image imgWrap' />`;
+                ;
+            });
 
-//         } else {
-//             document.getElementById("display").innerHTML = ''
-//         }
-//     });
-// }
-// sortCookies();
-
-
+        } else {
+            document.getElementById("display").innerHTML = ''
+        }
+    });
+}
+sortCookies();
 
 
 
-// // const commonBtn = document.getElementById("commonBtn");
+const charactersListSearch = document.getElementById('charactersList');
+const searchBar = document.getElementById('searchBar');
 
-// // commonBtn.addEventListener("click", (event) => {
-// // JavaScript
-// // const likeButton = document.getElementById('commonBtn');
-// // const likeCountElement = document.getElementById('like-count');
-// // let likeCount = 0;
+searchBar.addEventListener('keyup', (e) => {
+    const searchString = e.target.value.toLowerCase();
 
-// // // Listen for clicks on the like button and increment the like count
-// // likeButton.addEventListener('click', () => {
-// //     likeCount++;
-// //     likeCountElement.innerText = likeCount;
-// // });
-// // });
-
-// // const rareBtn = document.getElementById("rareBtn");
-// // rareBtn.addEventListener("click", (event) => {
-// //     data.rarity = 'Rare'
-
-// //     filterCookies();
-// // });
-
-// const clearBtn = document.getElementById("clearBtn");
-// clearBtn.addEventListener("click", (event) => {
-//     filterCommon = 'no'
-//     filterRare = 'no'
-//     filterClear = 'yes'
-//     filterCookies();
-// });
+    const filteredCharacters = data.filter((data) => {
+        return (
+            data.name.toLowerCase().includes(searchString)
+            // || data.type.toLowerCase().includes(searchString)
+        );
+    });
+    displayCharactersSearch(filteredCharacters);
+});
 
 
 
+const displayCharactersSearch = (data) => {
+    const htmlString = data
+        .map((data) => {
+            return `
+            <li class="character">
+                <h2>${data.name}</h2>
+                <p>House: ${data.type}</p>
+            </li>
+        `;
+        })
+        .join('');
+    charactersList.innerHTML = htmlString;
+};
 
-
-// const charactersList = document.getElementById('charactersList');
-// const searchBar = document.getElementById('searchBar');
-// // let data = [];
-
-// searchBar.addEventListener('keyup', (e) => {
-//     const searchString = e.target.value.toLowerCase();
-
-//     const filteredCharacters = data.filter((data) => {
-//         return (
-//             data.name.toLowerCase().includes(searchString)
-//             //  ||
-//             // // data.type.toLowerCase().includes(searchString)
-//         );
-//     });
-//     displayCharacters(filteredCharacters);
-// });
-
-
-
-// const displayCharacters = (data) => {
-//     const htmlString = data
-//         .map((data) => {
-//             return `
-//             <div class="test">${data.name} "search"</div>
-//             <p class="test">${data.type}</p>
-//             <img src='${data.image}' class='image imgWrap' />
-//         `;
-//         })
-//         .join('');
-//     display.innerHTML = htmlString;
-// };
-
-// getCookies2();
-
-// 
-
+getCookies();
 
 
 // async function mapCookies() {
@@ -150,9 +110,6 @@ async function getCookies2() {
 // }
 // mapCookies();
 
-// JavaScript
-// const likeButton = document.getElementById('like-button');
-// const likeCountElement = document.getElementById('like-count');
 
 //fetch character names
 //like by character
@@ -166,16 +123,6 @@ async function getCookies2() {
 
 // //The filter() method creates a new array filled with elements that pass a test provided by a function.
 // //Return an array of all values in data that are common:
-
-// const likeCountElementFront = document.getElementById('like-count-front');
-// let frontLikeCount = 0;
-
-// const likeButtonFront = document.getElementById('like-button-front');
-// // Listen for clicks on the like button and increment the like count
-// likeButtonFront.addEventListener('click', () => {
-//     frontLikeCount++;
-//     likeCountElementFront.innerText = frontLikeCount;
-// });
 
 
 const charactersList = document.getElementById('like-count');
@@ -256,74 +203,6 @@ getCookies2();
 
 
 
-
-
-
-
-
-
-
-
-// let LikeCount = 0;
-
-
-
-
-
-
-
-// async function filterCookies() {
-//     let data = await getCookies();
-//     console.log(data)
-
-//     const filteredCharacters = data.filter((data) => {
-//         console.log(data.position)
-//     });
-//     console.log(filteredCharacters)
-
-//     const likeCountElementFront = document.getElementById('like-count-front');
-//     let frontLikeCount = 0;
-
-//     const likeButtonFront = document.getElementById('like-button-front');
-//     // Listen for clicks on the like button and increment the like count
-//     likeButtonFront.addEventListener('click', () => {
-//         frontLikeCount++;
-//         likeCountElementFront.innerText = frontLikeCount;
-//     });
-
-// }
-// filterCookies();
-
-
-
-//Chaining map, filter, and reduce methods involves applying them sequentially, with each method receiving the output of the previous one.
-
-
-// //The for loop is an iterative statement that checks for certain conditions and then executes a block of code repeatedly as long as those conditions are met.
-// // for (let i = 0; i < data.length; i++) {
-// //     console.log(data[i]);
-// // }
-
-
-// //The for...of Loop iterates over iterable objects such as arrays, sets, maps, strings, and so on. It has the same syntax as the for...in loop, but instead of getting the key, it gets the element itself.
-// // for (data of data) {
-// //     console.log(data);
-// // }
-
-// async function forEach() {
-//     let data = await getCookies();
-//     let text = '';
-
-//     data.forEach(myFunction);
-//     function myFunction(data) {
-
-//         document.getElementById("forEach").innerHTML =
-//             text += `<div class="item col-sm-4"><h2>${data.character} "forEach"</div>
-//         <p class="text-right">${data.rarity}</p>`;
-//     }
-
-// }
-// forEach();
 
 
 
