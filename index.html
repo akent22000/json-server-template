@@ -13,38 +13,52 @@
 </head>
 
 <body>
-  <div class="container layer">
 
-    <div id="popup" class=""></div>
-
-    <div id="popup">
-      <img class="logo" src="images/logo-en.webp" alt="logo">
-    </div>
-
-
-    <table id="myTable">
-      <tr>
-        <th>Character <br> <span style="font-style:italic; font-size:14px">(Hover over a cookie name to see the cookie
-            avatar!)</span>
-        </th>
-        <th>Rarity</th>
-        <th>Type</th>
-        <th>Position</th>
-        <th>Best Toppings</th>
-      </tr>
-
-
-      <div class="row">
-        <div class="col l3" id="filternav">
-          <a class="black-text">
-            <h2 id="getCookies">Filter cookies by rarity</h2>
-          </a>
-        </div>
-
-        <input type="text" id="myInput" placeholder="Type in a rarity name here!" title="Type in a name">
-      </div>
+  <h1>Harry Potter Characters</h1>
+  <div id="searchWrapper">
+    <input type="text" name="searchBar" id="searchBar" placeholder="search for a character" />
   </div>
+  <ul id="charactersList"></ul>
   </div>
+  <!-- <div id="search">
+    <label for="searchInput">Find <i class="fa fa-search"></i>Friends</label>
+    <input id="search-input" type="text" placeholder="Search">
+  </div> -->
 
+  <!-- <ul id="results">
+    <li class="name">Bob</li>
+    <li class="name">Kate</li>
+    <li class="name">Cindy</li>
+    <li class="name">don</li>
+
+  </ul> -->
+  <div id="pokemon-list" class="pokemon-list"></div>
+
+  <div id="sort" class=""></div>
+  <div id="search" class=""></div>
+
+  <div id="display" class="display"></div>
+  <!-- <div id="map" class=""></div>
+    <div id="switch" class=""></div>
+    <div id="sort" class=""></div>
+    <div id="includes" class=""></div>
+    <div id="filter" class=""></div>
+    <div id="filter1" class=""></div>
+    <div id="filter2" class=""></div> -->
+
+  <button id="commonBtn">Common</button>
+  <button id="rareBtn">Rare</button>
+  <button id="clearBtn">Clear</button>
+
+  <!-- <button id="common">Common</button>
+    <button id="rare">Rare</button>
+    <button id="epic">Epic</button>
+    <button id="super">Super Epic</button>
+    <button id="legendary">Legendary</button>
+    <button id="ancient">Ancient</button>
+    <div id="data-list" class="data-list"></div> -->
+
+
+  </div>
   <script type="text/javascript" src="script.js"></script>
 </body>
