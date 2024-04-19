@@ -1,3 +1,4 @@
+/* 
 body {
   min-height: 100vh;
   display: flex;
@@ -10,6 +11,10 @@ body {
   font-style: normal;
 }
 
+h3,
+.h3 {
+  font-size: 15px;
+}
 
 .logo {
   position: fixed;
@@ -20,59 +25,13 @@ body {
 
 }
 
-.imgWrap {
-  left: 0;
-  /* position: relative; */
-  height: 200px;
-  width: 200px;
-  background-color: #fff;
-  border-radius: 25px;
-
-}
-
-
-#getCookies {
-  margin-top: 50px;
-}
-
-#myInput {
-  margin-bottom: 25px;
-  width: 200px;
-  height: 30px;
-
-}
-
-
-table {
-  border-collapse: collapse;
-  background-color: #e3d3c7;
-}
-
-th {
-  background-color: #412f27;
-  Color: white;
-}
-
-th,
-td {
-  width: 150px;
-  text-align: center;
-  border: 1px solid black;
-  padding: 25px
-}
-
 .image {
   width: 250px;
   height: inherit;
   padding: 10px;
-  margin-top: 200px;
-  position: fixed;
-  left: 0;
-
-
 }
 
-.card {
+.display {
   background-color: white;
   padding: 20px;
   border-radius: 15px;
@@ -95,19 +54,26 @@ td {
   box-sizing: border-box;
 }
 
-#list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.cookies {
-  font-size: 1.2em;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  animation: fadeIn 0.5s ease-in-out;
-}
 
-.cookies:last-child {
-  border-bottom: none;
-}
+.likeBtn {
+  cursor: pointer;
+  outline: 0;
+  color: #fff;
+  background-color: #412f27;
+  border-color: #261c17;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  border: 5px solid transparent;
+  padding: 6px 12px;
+  font-size: 16px;
+  border-radius: 13px;
+} */
+
+/* :hover {
+  color: #fff;
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+} */
