@@ -98,47 +98,43 @@ async function sortCookies() {
 sortCookies();
 
 
+async function searchCookies() {
 
+    const charactersList = document.getElementById('charactersList');
+    const searchBar = document.getElementById('searchBar');
+    // let data = [];
 
+    searchBar.addEventListener('keyup', (e) => {
+        const searchString = e.target.value.toLowerCase();
 
-
-
-
-const charactersList = document.getElementById('charactersList');
-const searchBar = document.getElementById('searchBar');
-// let data = [];
-
-searchBar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value.toLowerCase();
-
-    const filteredCharacters = data.filter((data) => {
-        return (
-            data.name.toLowerCase().includes(searchString)
-            //  ||
-            // // data.type.toLowerCase().includes(searchString)
-        );
+        const filteredCharacters = data.filter((data) => {
+            return (
+                data.name.toLowerCase().includes(searchString)
+                //  ||
+                // // data.type.toLowerCase().includes(searchString)
+            );
+        });
+        displayCharacters(filteredCharacters);
     });
-    displayCharacters(filteredCharacters);
-});
 
-
-
-const displayCharacters = (data) => {
-    const htmlString = data
-        .map((data) => {
-            return `
+    const displayCharacters = (data) => {
+        const htmlString = data
+            .map((data) => {
+                return `
             <div class="card">
             <img src='${data.image}' class='image imgWrap' />
             <h3>${data.name} "sort"</h3>
             <h3>${data.rarity}</h3>
             </div>
         `;
-        })
-        .join('');
-    display.innerHTML = htmlString;
-};
-
+            })
+            .join('');
+        display.innerHTML = htmlString;
+    };
+}
 getCookies2();
+searchCookies();
+
 
 
 
@@ -153,81 +149,82 @@ getCookies2();
 //when character like button clicked
 //then update character like counter
 
+async function likeCookies() {
 
-const charactersList1 = document.getElementById('like-count');
-const charactersList2 = document.getElementById('like-count2');
-const likeButton = document.getElementById('like-button');
-const likeButton2 = document.getElementById('like-button2');
+    const charactersList1 = document.getElementById('like-count');
+    const charactersList2 = document.getElementById('like-count2');
+    const likeButton = document.getElementById('like-button');
+    const likeButton2 = document.getElementById('like-button2');
 
-// let data = [];
-let LikeCount = 0;
-let LikeCount2 = 0;
+    // let data = [];
+    let LikeCount = 0;
+    let LikeCount2 = 0;
 
-likeButton.addEventListener('click', (e) => {
+    likeButton.addEventListener('click', (e) => {
 
-    const filteredCharacters = data.filter((data) => {
-        // console.log(data.position)
-        return (
-            data.position.includes('Front')
-        );
+        const filteredCharacters = data.filter((data) => {
+            // console.log(data.position)
+            return (
+                data.position.includes('Front')
+            );
+        });
+        LikeCount++;
+        charactersList1.innerText = LikeCount;
+        displayCharacters1(filteredCharacters);
+        console.log(filteredCharacters)
+
     });
-    LikeCount++;
-    charactersList1.innerText = LikeCount;
-    displayCharacters1(filteredCharacters);
-    console.log(filteredCharacters)
 
-});
-
-// if (filteredCharacters === "Rear") {
-//     console.log("dd")
-//     LikeCount++;
-// }
+    // if (filteredCharacters === "Rear") {
+    //     console.log("dd")
+    //     LikeCount++;
+    // }
 
 
-likeButton2.addEventListener('click', (e) => {
+    likeButton2.addEventListener('click', (e) => {
 
-    const filteredCharacters = data.filter((data) => {
-        console.log(data.position)
+        const filteredCharacters = data.filter((data) => {
+            console.log(data.position)
 
-        return (
-            data.position.includes('Rear')
-        );
+            return (
+                data.position.includes('Rear')
+            );
+        });
+        LikeCount2++;
+        charactersList2.innerText = LikeCount2;
+        displayCharacters1(filteredCharacters);
+        console.log(filteredCharacters)
+
+
     });
-    LikeCount2++;
-    charactersList2.innerText = LikeCount2;
-    displayCharacters1(filteredCharacters);
-    console.log(filteredCharacters)
-
-
-});
 
 
 
 
-const displayCharacters1 = (data) => {
-    // LikeCount++;
-    // charactersList.innerText = LikeCount;
+    const displayCharacters1 = (data) => {
+        // LikeCount++;
+        // charactersList.innerText = LikeCount;
 
-    // charactersList2.innerText = LikeCount;
-    const htmlString = data
+        // charactersList2.innerText = LikeCount;
+        const htmlString = data
 
-        .map((data) => {
-            return `
+            .map((data) => {
+                return `
             <div class="card">
             <img src='${data.image}' class='image imgWrap' />
             <h3>${data.name} "sort"</h3>
             <h3>${data.rarity}</h3>
             </div>
         `;
-        })
-        .join('');
-    document.getElementById("display").innerHTML = htmlString
+            })
+            .join('');
+        document.getElementById("display").innerHTML = htmlString
 
-    // display.innerHTML = htmlString;
-    // console.log(data)
-    // console.log(htmlString)
+        // display.innerHTML = htmlString;
+        // console.log(data)
+        // console.log(htmlString)
 
+    };
 };
-
-
+likeCookies()
 getCookies2();
