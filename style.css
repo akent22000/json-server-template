@@ -39,10 +39,10 @@ h3,
 }
 
 .display {
-  /* background-color: white; */
-  padding: 20px;
-  border-radius: 15px;
-  margin: 20px;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
 
 }
 
@@ -50,14 +50,14 @@ h3,
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
 }
 
-#searchbar {
+#searchBar {
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
 }
 

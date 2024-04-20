@@ -9,7 +9,7 @@ async function getCookies2() {
 }
 
 
-async function mapCookies() {
+async function displayCookies() {
     data = await getCookies();
     const cardsContainer = document.getElementById('display');
 
@@ -43,7 +43,7 @@ async function mapCookies() {
         cardsContainer.appendChild(div)
     });
 }
-mapCookies();
+displayCookies();
 
 function createCheckbox() {
     let checkbox = document.createElement("input");
