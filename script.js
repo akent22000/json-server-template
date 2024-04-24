@@ -22,30 +22,34 @@ async function displayCookies() {
         const position = document.createElement('h3');
 
 
-        const like = document.createElement('button');
+        // const like = document.createElement('button');
         div.classList = 'card'
         image.classList = 'card-img'
-        like.classList = 'empty'
+        // like.classList = 'empty'
         image.src = data.image
         image.classList.add('image');
         name.innerText = `Name: ${data.name}`
         rarity.innerText = `Rarity: ${data.rarity}`
         type.innerText = `Type: ${data.type}`
         position.innerText = `Position: ${data.position}`
-        like.textContent = 'like'
+        // like.textContent = 'like'
 
         div.appendChild(image)
         div.appendChild(name)
         div.appendChild(rarity)
         div.appendChild(type)
         div.appendChild(position)
-        div.appendChild(like)
+        // div.appendChild(like)
         cardsContainer.appendChild(div)
     });
 }
 displayCookies();
 
 function createCheckbox() {
+
+    let containerCheckbox = document.getElementById('containerCheckbox');
+
+    let checkboxDiv = document.createElement("div");
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("id", "checkbox");
@@ -53,8 +57,11 @@ function createCheckbox() {
     let checkboxP = document.createElement("p");
     checkboxP.textContent = "Click Checkbox to sort Cookie Characters alpabetically"
 
-    document.body.appendChild(checkboxP);
-    document.body.appendChild(checkbox);
+    checkboxDiv.appendChild(checkboxP);
+    checkboxDiv.appendChild(checkbox);
+    // checkboxDiv.appendChild(checkboxDiv);
+    containerCheckbox.appendChild(checkboxDiv);
+
 }
 createCheckbox();
 

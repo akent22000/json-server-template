@@ -8,13 +8,6 @@
       "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/c/c1/Brave-cookie.png"
     },
     {
-      "name": "Strawberry Cookie",
-      "rarity": "Common",
-      "type": "Defense",
-      "position": "Front",
-      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/a/a6/Strawberry-cookie.png"
-    },
-    {
       "name": "Princess Cookie",
       "rarity": "Rare",
       "type": "Charge",
@@ -27,6 +20,27 @@
       "type": "Magic",
       "position": "Rear",
       "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/7/7a/Blackberry_cookie.png"
+    },
+    {
+      "name": "Shining Glitter Cookie",
+      "rarity": "Super Epic",
+      "type": "Magic",
+      "position": "Middle",
+      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/c/cf/Shining_glitter_illustration.png"
+    },
+    {
+      "name": "Frost Queen Cookie",
+      "rarity": "Legendary",
+      "type": "Magic",
+      "position": "Middle",
+      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/2/25/Frost_queen_illustration.png"
+    },
+    {
+      "name": "Pure Vanilla Cookie",
+      "rarity": "Ancient",
+      "type": "Healing",
+      "position": "Rear",
+      "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/7/7a/Pure_vanilla_illustration.png"
     }
   ]
 }
