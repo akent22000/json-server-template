@@ -31,4 +31,3 @@ Here’s what you’ll find in this my project:
     - filter method is used to search Cookies by name input as well as like buttons 
     - sort method is used to sort alphabetically by checkbox
     - map is used to create and display HTML elements
-
