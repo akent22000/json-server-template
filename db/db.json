@@ -1,6 +1,7 @@
 {
   "cookies": [
     {
+      "id": "1",
       "name": "Ginger Brave",
       "rarity": "Common",
       "type": "Charge",
@@ -8,6 +9,7 @@
       "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/c/c1/Brave-cookie.png"
     },
     {
+      "id": "2",
       "name": "Princess Cookie",
       "rarity": "Rare",
       "type": "Charge",
@@ -15,6 +17,7 @@
       "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/4/48/Princess_cookie_alternate.png"
     },
     {
+      "id": "3",
       "name": "Blackberry Cookie",
       "rarity": "Rare",
       "type": "Magic",
@@ -22,6 +25,7 @@
       "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/7/7a/Blackberry_cookie.png"
     },
     {
+      "id": "4",
       "name": "Shining Glitter Cookie",
       "rarity": "Super Epic",
       "type": "Magic",
@@ -29,6 +33,7 @@
       "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/c/cf/Shining_glitter_illustration.png"
     },
     {
+      "id": "5",
       "name": "Frost Queen Cookie",
       "rarity": "Legendary",
       "type": "Magic",
@@ -36,6 +41,7 @@
       "image": "https://static.wikia.nocookie.net/cookierunkingdom/images/2/25/Frost_queen_illustration.png"
     },
     {
+      "id": "6",
       "name": "Pure Vanilla Cookie",
       "rarity": "Ancient",
       "type": "Healing",
