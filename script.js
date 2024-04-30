@@ -2,10 +2,7 @@
 //As a user I want to visit the web app and see a list of six Cookie Run Kingdom characters when the page loads.
 //In this list, I want to see each Cookies character name, rarity, battle position, battle type, and an image of each Cookie.
 
-document.addEventListener('DOMContentLoaded', () => displayCookies());
-
-let cookies;
-
+// document.addEventListener('DOMContentLoaded', () => displayCookies());
 
 // Function to fetch data from the API
 // Using async here since I opted for the try, await, and catch 
@@ -23,9 +20,7 @@ async function fetchCookies() {
 }
 
 
-
 ////////////////////////////////////////////////////////////////
-
 
 
 // Grab cookie data from fetch function
@@ -34,38 +29,6 @@ async function fetchCookies() {
 // Create each html element 
 // Declare each html element
 // Nest each html element
-
-let displayCookies = async () => {
-    const cookies = await fetchCookies();
-
-    const cardsContainer = document.getElementById('display');
-
-    cookies.forEach(cookie => {
-
-        const div = document.createElement('div');
-        const image = document.createElement('img');
-        const name = document.createElement('h3');
-        const rarity = document.createElement('h3');
-        const type = document.createElement('h3');
-        const position = document.createElement('h3');
-
-        div.classList = 'card'
-        image.classList = 'card-img'
-        image.src = cookie.image
-        image.classList.add('image');
-        name.innerText = `Name: ${cookie.name}`
-        rarity.innerText = `Rarity: ${cookie.rarity}`
-        type.innerText = `Type: ${cookie.type}`
-        position.innerText = `Position: ${cookie.position}`
-
-        div.appendChild(image)
-        div.appendChild(name)
-        div.appendChild(rarity)
-        div.appendChild(type)
-        div.appendChild(position)
-        cardsContainer.appendChild(div)
-    });
-};
 
 //////////////////////////////////////////////////////////////
 
@@ -100,8 +63,9 @@ createCheckbox();
 
 // display sorted cookies on html page if checkbox is checked
 // display no cookies of checkbox is unchecked
-let sortCookies = async () => {
-    const cookies = await fetchCookies();
+// let sortCookies = async () => {
+async function sortCookies(callback) {
+    let cookies = await fetchCookies();
 
     if (checkbox.checked) {
         cookies.sort((a, b) => {
@@ -123,48 +87,24 @@ let sortCookies = async () => {
             // Zero or NaN indicates that a and b are considered equal.
             return 0;
         });
-
-        document.getElementById("display").innerHTML = ''
-        const cardsContainer = document.getElementById('display');
-
-        cookies.forEach(cookie => {
-            const div = document.createElement('div');
-            const image = document.createElement('img');
-            const name = document.createElement('h3');
-            const rarity = document.createElement('h3');
-            const type = document.createElement('h3');
-            const position = document.createElement('h3');
-
-            div.classList = 'card'
-            image.classList = 'card-img'
-            image.src = cookie.image
-            image.classList.add('image');
-            name.innerText = `Name: ${cookie.name}`
-            rarity.innerText = `Rarity: ${cookie.rarity}`
-            type.innerText = `Type: ${cookie.type}`
-            position.innerText = `Position: ${cookie.position}`
-
-            div.appendChild(image)
-            div.appendChild(name)
-            div.appendChild(rarity)
-            div.appendChild(type)
-            div.appendChild(position)
-            cardsContainer.appendChild(div)
-        });
+        cookies = cookies;
+        callback(cookies);
 
     } else {
         document.getElementById("display").innerHTML = ''
     }
 
 }
-sortCookies();
+// sortCookies();
 
 let checkbox = document.getElementById("checkbox");
 
 checkbox.addEventListener("change", () => {
-    sortCookies();
+    sortCookies(displayCookies);
 
 });
+
+
 ////////////////////////////////////////////////////////////////
 
 
@@ -179,8 +119,8 @@ checkbox.addEventListener("change", () => {
 
 let search_term = '';
 
-const searchCookies = async () => {
-    const cookies = await fetchCookies();
+const searchCookies = async (callback) => {
+    let cookies = await fetchCookies();
 
     const cardsContainer = document.getElementById('display');
     // Reset display div to empty
@@ -189,6 +129,7 @@ const searchCookies = async () => {
     cookies.filter(cookie =>
         cookie.name.toLowerCase().includes(search_term.toLowerCase())
     )
+
         .forEach(cookie => {
             const div = document.createElement('div');
             const image = document.createElement('img');
@@ -240,7 +181,7 @@ searchBar.addEventListener('keyup', e => {
 // display cooresponding cookies on html page when cooresponding position button is clicked
 
 let likeCookies = async () => {
-    const cookies = await fetchCookies();
+    let cookies = await fetchCookies();
 
     const likeCountFront = document.getElementById('likeCountFront');
     const likeCountMiddle = document.getElementById('likeCountMiddle');
@@ -253,8 +194,8 @@ let likeCookies = async () => {
     let LikeCount2 = 0;
     let LikeCount3 = 0;
 
-    likeButtonFront.addEventListener('click', (e) => {
-        const filteredCookies = cookies.filter((cookie) => {
+    likeButtonFront.addEventListener('click', () => {
+        const filteredCookiesFront = cookies.filter((cookie) => {
             // console.log(data.position)
             return (
                 cookie.position.includes('Front')
@@ -262,11 +203,11 @@ let likeCookies = async () => {
         });
         LikeCount++;
         likeCountFront.innerText = LikeCount;
-        displayLikeCookies(filteredCookies);
+        displayCookies(filteredCookiesFront);
     });
 
     likeButtonMiddle.addEventListener('click', (e) => {
-        const filteredCookies = cookies.filter((cookie) => {
+        const filteredCookiesMiddle = cookies.filter((cookie) => {
             console.log(cookie.position)
 
             return (
@@ -275,11 +216,11 @@ let likeCookies = async () => {
         });
         LikeCount2++;
         likeCountMiddle.innerText = LikeCount2;
-        displayLikeCookies(filteredCookies);
+        displayCookies(filteredCookiesMiddle);
     });
 
     likeButtonRear.addEventListener('click', (e) => {
-        const filteredCookies = cookies.filter((cookie) => {
+        const filteredCookiesRear = cookies.filter((cookie) => {
             console.log(cookie.position)
 
             return (
@@ -288,41 +229,42 @@ let likeCookies = async () => {
         });
         LikeCount3++;
         likeCountRear.innerText = LikeCount3;
-        displayLikeCookies(filteredCookies);
+        displayCookies(filteredCookiesRear);
     });
 
-    const displayLikeCookies = (cookies) => {
-        const cardsContainer = document.getElementById('display');
-        // Reset display div to empty
-        cardsContainer.innerHTML = '';
-
-        cookies.forEach(cookie => {
-            const div = document.createElement('div');
-            const image = document.createElement('img');
-            const name = document.createElement('h3');
-            const rarity = document.createElement('h3');
-            const type = document.createElement('h3');
-            const position = document.createElement('h3');
-
-            div.classList = 'card'
-            image.classList = 'card-img'
-            image.src = cookie.image
-            image.classList.add('image');
-            name.innerText = `Name: ${cookie.name}`
-            rarity.innerText = `Rarity: ${cookie.rarity}`
-            type.innerText = `Type: ${cookie.type}`
-            position.innerText = `Position: ${cookie.position}`
-
-            div.appendChild(image)
-            div.appendChild(name)
-            div.appendChild(rarity)
-            div.appendChild(type)
-            div.appendChild(position)
-            cardsContainer.appendChild(div)
-        });
-
-    };
 };
 likeCookies()
 
 
+
+function displayCookies(cookies) {
+    const cardsContainer = document.getElementById('display');
+    // Reset display div to empty
+    cardsContainer.innerHTML = '';
+    cookies.forEach(cookie => {
+
+        const div = document.createElement('div');
+        const image = document.createElement('img');
+        const name = document.createElement('h3');
+        const rarity = document.createElement('h3');
+        const type = document.createElement('h3');
+        const position = document.createElement('h3');
+
+        div.classList = 'card'
+        image.classList = 'card-img'
+        image.src = cookie.image
+        image.classList.add('image');
+        name.innerText = `Name: ${cookie.name}`
+        rarity.innerText = `Rarity: ${cookie.rarity}`
+        type.innerText = `Type: ${cookie.type}`
+        position.innerText = `Position: ${cookie.position}`
+
+        div.appendChild(image)
+        div.appendChild(name)
+        div.appendChild(rarity)
+        div.appendChild(type)
+        div.appendChild(position)
+        cardsContainer.appendChild(div)
+    });
+
+}
