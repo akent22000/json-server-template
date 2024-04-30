@@ -2,7 +2,11 @@
 //As a user I want to visit the web app and see a list of six Cookie Run Kingdom characters when the page loads.
 //In this list, I want to see each Cookies character name, rarity, battle position, battle type, and an image of each Cookie.
 
-// document.addEventListener('DOMContentLoaded', () => displayCookies());
+document.addEventListener("DOMContentLoaded", () => {
+    displayCookiesDOM(displayCookies)
+});
+
+
 
 // Function to fetch data from the API
 // Using async here since I opted for the try, await, and catch 
@@ -17,6 +21,14 @@ async function fetchCookies() {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
+}
+
+
+
+async function displayCookiesDOM(callback) {
+    let cookies = await fetchCookies();
+    callback(cookies);
+
 }
 
 
@@ -237,7 +249,8 @@ likeCookies()
 
 
 
-function displayCookies(cookies) {
+async function displayCookies(cookies) {
+
     const cardsContainer = document.getElementById('display');
     // Reset display div to empty
     cardsContainer.innerHTML = '';
@@ -268,3 +281,4 @@ function displayCookies(cookies) {
     });
 
 }
+// displayCookies();
